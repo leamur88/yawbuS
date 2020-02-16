@@ -24,8 +24,10 @@ white = (255, 255, 255)
 green = (0, 255, 0)
 blue = (0, 0, 128)
 black = (0,0,0)
+red=(255,0,0)
+dark_gray=(47,79,79)
+light_gray=(211,211,211)
 
-total_money = 0
 
 win =pygame.display.set_mode((s_width,s_height))
 pygame.display.set_caption("Sandwich Time")
@@ -74,19 +76,23 @@ class player():
 me=player(x,y)
 def redrawGameWindow():
     #Background
-    win.fill((0,0,0))#Black Background
+    win.fill(light_gray)#Black Background
     for col in range(0,s_width,b_width*2):#This is for the first set of rows and cols
         for row in range(0,s_height,b_height*2):
-            pygame.draw.rect(win,(255,255,255),(col,row,b_width,b_height))
+            pygame.draw.rect(win,dark_gray,(col,row,b_width,b_height))
     for col in range(b_width,s_width,b_width*2):#Second set of rows and cols
         for row in range(b_height,s_height,b_height*2):
-            pygame.draw.rect(win,(255,255,255),(col,row,b_width,b_height))
+            pygame.draw.rect(win,dark_gray,(col,row,b_width,b_height))
     pygame.draw.rect(win,(0,0,0),(0,0,250,s_height))#Black left Column
     pygame.draw.rect(win,blue,(125-(p_width//2),s_height-p_height-5,p_width,p_height))#Progress Bar
     textbox('Progress (200$)',125,s_height-p_height-10,green,black)
-    textbox('$100',175,550,green,black)
+    textbox('$100',180,550,green,black)
+    pygame.draw.rect(win,red,(100,550,p_width,5))
     textbox('$150',180,500,green,black)
+    pygame.draw.rect(win,red,(100,500,p_width,5))
     textbox('$50',180,600,green,black)
+    pygame.draw.rect(win,red,(100,600,p_width,5))
+    pygame.draw.rect(win,green,(100,650-total_money,p_width,total_money))
 
     counter=pygame.image.load("filledcounter.jpg")
     win.blit(counter, (450, 250))
@@ -125,6 +131,8 @@ while  run:
         left = False
         right = False
 
+    if total_money >=200:
+        win.fill(white)
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
             run=False
