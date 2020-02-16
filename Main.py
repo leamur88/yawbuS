@@ -26,13 +26,10 @@ white = (255, 255, 255)
 green = (0, 255, 0)
 blue = (0, 0, 128)
 black = (0,0,0)
-<<<<<<< HEAD
 red=(255,0,0)
 dark_gray=(47,79,79)
 light_gray=(211,211,211)
 gray=(128,128,128)
-=======
->>>>>>> 872d292db90ca363af5902ecd339d654546570bb
 
 total_money = 0
 
@@ -107,14 +104,9 @@ def redrawGameWindow():
     textbox('$50',180,600,green,black,22)
     pygame.draw.rect(win,red,(100,600,p_width,5))
     pygame.draw.rect(win,green,(100,650-total_money,p_width,total_money))
-<<<<<<< HEAD
     #Sandwich progress
     counter=pygame.image.load("filledcounter.jpg")
     pygame.draw.rect(win,gray,(250,0,200,550))
-=======
-
-    counter=pygame.image.load("marblecounter.jpg")
->>>>>>> 872d292db90ca363af5902ecd339d654546570bb
     win.blit(counter, (450, 250))
     textbox('Sandwich Progress',350,10,white,black,22)
 
