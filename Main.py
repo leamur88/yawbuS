@@ -238,7 +238,7 @@ while run:
     if ingredient_list == current_ham.order:
         n=0
         floatvelo+=.25
-        velocity=floatvelo//1
+        velocity=int(floatvelo//1)
         for ingred in ingredient_list:
             total_money+= ingred.cost
         ingredient_list=[0,0,0,0,0]
