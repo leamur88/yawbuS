@@ -25,37 +25,41 @@ green = (0, 255, 0)
 blue = (0, 0, 128)
 black = (0,0,0)
 
+total_money = 0
+
 win =pygame.display.set_mode((s_width,s_height))
 pygame.display.set_caption("Sandwich Time")
 pygame.init()
 run= True
 
 class Ingredients:
-    def __init__(self, id, type, select):
+    def __init__(self, image_id, type, select):
         self.id = id
         self.type = type
 
 
-GR = Ingredients("Golden Retriever", "bread", 'g')
-Huskie = Ingredients("Huskie", "bread", 'h')
-Dachshund = Ingredients("Dachshund", "bread", 'd')
+GR = Ingredients("Golden_Retriever.png", "bread", 'g')
+Huskie = Ingredients("Huskie.png", "bread", 'h')
+Dachshund = Ingredients("Dachshund.png", "bread", 'd')
 
-Heart = Ingredients("Heart", "meat", 'h')
-Brain = Ingredients("Brain", "meat", 'b')
-Liver = Ingredients("Liver", 'meat', 'l')
-Pancreas = Ingredients("Pancreas", 'meat', 'p')
+Heart = Ingredients("heart.png", "meat", 'h')
+Brain = Ingredients("brain.png", "meat", 'b')
+Liver = Ingredients("liver.png", 'meat', 'l')
+Lung = Ingredients('lung.png', 'meat', 'p')
 
-FireHydrant = Ingredients("FireHydrant", 'veg', 'f')
-Limo = Ingredients("Limo", 'veg', 'a')
-Statue = Ingredients("Statue", 'veg', 's')
-Surfboard = Ingredients("Surfboard", 'veg', 'b')
+FireHydrant = Ingredients("firehydrant.png", 'veg', 'f')
+Limo = Ingredients("limo.png", 'veg', 'a')
+Statue = Ingredients("statue.png", 'veg', 's')
+Surfboard = Ingredients("surfboard.png", 'veg', 'b')
 
-Fire = Ingredients("Fire", "sauce", 'f')
-Mud = Ingredients("Mud", "sauce", 'm')
-Slime = Ingredients("Slime", 'sauce', 's')
+Fire = Ingredients("fire,png", "sauce", 'f')
+Mud = Ingredients("mud.gif", "sauce", 'm')
+Slime = Ingredients("Slime.gif", 'sauce', 's')
 
+menu = [Heart, Brain, Liver, Pancreas, FireHydrant, Limo, Statue, Surfboard, Fire, Mud, Slime]
+bread = [GR, Huskie, Dachshund]
 class Hamburgers:
-    def __init__(self, x):
+    def __init__(self, x, order):
         print("")
 
 
@@ -74,7 +78,7 @@ def redrawGameWindow():
     pygame.draw.rect(win,blue,(125-(p_width//2),s_height-p_height-5,p_width,p_height))#Progress Bar
     textbox('Progress',125,s_height-p_height-10,green,black)
 
-    counter=pygame.image.load("blankcounter.jpg")
+    counter=pygame.image.load("marblecounter.jpg")
     win.blit(counter, (450, 250))
     if left:
         win.blit(walkLeft, (x,y))
