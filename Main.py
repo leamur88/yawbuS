@@ -61,13 +61,21 @@ def textbox(text,x,y,fontcolor,backgroundcolor): #Us this to make textboxes
     win.blit(text,textRect)
 
 
+counter=pygame.image.load('marblecounter.jpg')
+win.blit(counter,(450,250))
+
+#win.blit(nameofimage(must be loaded prior,x,y)
+#Example
+#fire=pygame.image.load('fire.png')
+#win.blit(fire,(100,100))
+
 pygame.display.update()
 
 while  run:
 
     keys = pygame.key.get_pressed()
 
-    if keys[pygame.K_LEFT] and x > vel:
+    if keys[pygame.K_LEFT] and x > vel+250:
         x -= vel
         left = True
         right = False
