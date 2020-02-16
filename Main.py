@@ -117,6 +117,7 @@ def redrawGameWindow():
     textbox("Current Order",125,15,white,black,30)
     pygame.draw.rect(win,white,(0,30,250,5))
 
+    pygame.draw.rect(win,light_gray,(20,45,210,300))
 
 
 
