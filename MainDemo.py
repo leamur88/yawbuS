@@ -54,9 +54,9 @@ class Ingredients:
         self.cost = cost
 
 #bread
-GR = Ingredients("Golden Retriever.png", "bread", 'g', 100)
-Huskie = Ingredients("Huskie.png", "bread", 'h', 100)
-Dachshund = Ingredients("Dachshund.png", "bread", 'd', 100)
+GR = Ingredients("Golden Retriever.png", "bread", 'g', 20)
+Huskie = Ingredients("Huskie.png", "bread", 'h', 20)
+Dachshund = Ingredients("Dachshund.png", "bread", 'd', 20)
 
 #meat
 Heart = Ingredients("Heart.png", "meat", 'h', 5)
