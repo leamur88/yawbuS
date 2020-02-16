@@ -74,7 +74,7 @@ def redrawGameWindow():
     pygame.draw.rect(win,blue,(125-(p_width//2),s_height-p_height-5,p_width,p_height))#Progress Bar
     textbox('Progress',125,s_height-p_height-10,green,black)
 
-    counter=pygame.image.load("blankcounter.jpg")
+    counter=pygame.image.load("filledcounter.jpg")
     win.blit(counter, (450, 250))
     if left:
         win.blit(walkLeft, (x,y))
