@@ -75,11 +75,12 @@ veggie = [FireHydrant.id, Limo.id, Statue.id, Surfboard.id]
 sauce = [Fire.id, Mud.id, Slime.id]
 
 class Hamburgers:
-    def __init__(self, x,y):
+    def __init__(self, x,y,velo):
         self.x = x
         self.y =y
         self.orderSum = 0
         self.order = []
+        self.velo=velo
         self.createOrder()
 
     def createOrder(self):
@@ -163,16 +164,17 @@ def textbox(text,x,y,fontcolor,backgroundcolor,fontsize): #Us this to make textb
 
 
 pygame.display.update()
-n=0
+n=0 #Hamburger counter
+velocity=1  #Hamburger velocity
 while run:
 
     keys = pygame.key.get_pressed()
 
     if n==0:
         n=1
-        current_ham = Hamburgers(1250,75)
+        current_ham = Hamburgers(1250,75,1)
         print(current_ham.order)
-    current_ham.x-=1
+    current_ham.x-=current_ham.velo
     if total_money < 200:
         if current_ham.x <=250:
             print("You have taken too long to complete the leBurger's order, better luck next time...")
@@ -230,7 +232,9 @@ while run:
 
     if ingredient_list == current_ham.order:
         n=0
-        total_money+=25
+        velocity+=1
+        for ingred in ingredient_list:
+            total_money+= ingred.cost
 
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
