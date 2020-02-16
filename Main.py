@@ -1,7 +1,7 @@
 import pygame
 #Variables
 s_width = 1250 #Screen Size
-s_height = 750
+s_height = 650
 x=50
 y=690
 b_width=100 #Background tiles
