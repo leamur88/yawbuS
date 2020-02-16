@@ -69,10 +69,10 @@ Fire = Ingredients("fire.png", "sauce", 'f', 10)
 Mud = Ingredients("mud.gif", "sauce", 'm', 10)
 Slime = Ingredients("slime.gif", 'sauce', 's', 10)
 
-bread = [GR.id, Huskie.id, Dachshund.id]
-meat = [Heart.id, Brain.id, Liver.id, Lung.id]
-veggie = [FireHydrant.id, Limo.id, Statue.id, Surfboard.id]
-sauce = [Fire.id, Mud.id, Slime.id]
+bread = [GR, Huskie, Dachshund]
+meat = [Heart, Brain, Liver, Lung]
+veggie = [FireHydrant, Limo, Statue, Surfboard]
+sauce = [Fire, Mud, Slime]
 
 class Hamburgers:
     def __init__(self, x,y,velo):
@@ -121,6 +121,11 @@ def redrawGameWindow():
     pygame.draw.rect(win,light_gray,(20,45,210,300))
 
 
+    textbox(current_ham.order[0].id[0: -4] + " " + current_ham.order[0].select,125,60,black,light_gray,20)
+    textbox(current_ham.order[1].id[0: -4] + " " + current_ham.order[1].select,125,80,black,light_gray,20)
+    textbox(current_ham.order[2].id[0: -4] + " " + current_ham.order[2].select,125,100,black,light_gray,20)
+    textbox(current_ham.order[3].id[0: -4] + " " + current_ham.order[3].select,125,120,black,light_gray,20)
+
 
 
 
@@ -133,17 +138,17 @@ def redrawGameWindow():
     win.blit(counter, (450, 250))
     textbox('Sandwich Progress',350,262,white,black,22)
     if ingredient_list[0]!=0:
-        bread = pygame.image.load(ingredient_list[0])
+        bread = pygame.image.load(ingredient_list[0].id)
         win.blit(bread, (300,270))
         win.blit(bread, (300,460))
     if ingredient_list[1]!=0:
-        meat = pygame.image.load(ingredient_list[1])
+        meat = pygame.image.load(ingredient_list[1].id)
         win.blit(meat, (300,400))
     if ingredient_list[2]!=0:
-        veggie = pygame.image.load(ingredient_list[2])
+        veggie = pygame.image.load(ingredient_list[2].id)
         win.blit(veggie, (300,370))
     if ingredient_list[3]!=0:
-        sauce = pygame.image.load(ingredient_list[3])
+        sauce = pygame.image.load(ingredient_list[3].id)
         win.blit(sauce, (300,300))
     #Movement
     if left:
@@ -173,7 +178,6 @@ while run:
     if n==0:
         n=1
         current_ham = Hamburgers(1250,75,1)
-        print(current_ham.order)
     current_ham.x-=current_ham.velo
     if total_money < 200:
         if current_ham.x <=250:
@@ -193,42 +197,42 @@ while run:
 
     #Bread
     if keys[pygame.K_g] and x > 1045:
-        ingredient_list[0] = GR.id
-        ingredient_list[4] = GR.id
+        ingredient_list[0] = GR
+        ingredient_list[4] = GR
     elif keys[pygame.K_h] and x > 1045:
-        ingredient_list[0] = Huskie.id
-        ingredient_list[4] = Huskie.id
+        ingredient_list[0] = Huskie
+        ingredient_list[4] = Huskie
     elif keys[pygame.K_d] and x > 1045:
-        ingredient_list[0] = Dachshund.id
-        ingredient_list[4] = Dachshund.id
+        ingredient_list[0] = Dachshund
+        ingredient_list[4] = Dachshund
 
     #Meat
     elif keys[pygame.K_h] and x > 795 and x < 1045:
-        ingredient_list[1] = Heart.id
+        ingredient_list[1] = Heart
     elif keys[pygame.K_b] and x > 795 and x < 1045:
-        ingredient_list[1] = Brain.id
+        ingredient_list[1] = Brain
     elif keys[pygame.K_l] and x > 795 and x < 1045:
-        ingredient_list[1] = Liver.id
+        ingredient_list[1] = Liver
     elif keys[pygame.K_u] and x > 795 and x < 1045:
-        ingredient_list[1] = Lung.id
+        ingredient_list[1] = Lung
 
     #Veg
     elif keys[pygame.K_f] and x > 550 and x < 795:
-        ingredient_list[2] = FireHydrant.id
+        ingredient_list[2] = FireHydrant
     elif keys[pygame.K_l] and x > 550 and x < 795:
-        ingredient_list[2] = Limo.id
+        ingredient_list[2] = Limo
     elif keys[pygame.K_s] and x > 550 and x < 795:
-        ingredient_list[2] = Statue.id
+        ingredient_list[2] = Statue
     elif keys[pygame.K_b] and x > 550 and x < 795:
-        ingredient_list[2] = Surfboard.id
+        ingredient_list[2] = Surfboard
 
     #Sauce
     elif keys[pygame.K_f] and x > 405 and x < 550:
-        ingredient_list[3] = Fire.id
+        ingredient_list[3] = Fire
     elif keys[pygame.K_m] and x > 405 and x < 550:
-        ingredient_list[3] = Mud.id
+        ingredient_list[3] = Mud
     elif keys[pygame.K_s] and x > 405 and x < 550:
-        ingredient_list[3] = Slime.id
+        ingredient_list[3] = Slime
 
     if ingredient_list == current_ham.order:
         n=0
