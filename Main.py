@@ -26,13 +26,10 @@ white = (255, 255, 255)
 green = (0, 255, 0)
 blue = (0, 0, 128)
 black = (0,0,0)
-<<<<<<< HEAD
 red=(255,0,0)
 dark_gray=(47,79,79)
 light_gray=(211,211,211)
 gray=(128,128,128)
-=======
->>>>>>> 872d292db90ca363af5902ecd339d654546570bb
 
 total_money = 0
 
@@ -89,13 +86,13 @@ class Hamburgers:
 
 def redrawGameWindow():
     #Background
-    win.fill((0,0,0))#Black Background
+    win.fill(light_gray)
     for col in range(0,s_width,b_width*2):#This is for the first set of rows and cols
         for row in range(0,s_height,b_height*2):
-            pygame.draw.rect(win,(255,255,255),(col,row,b_width,b_height))
+            pygame.draw.rect(win,dark_gray,(col,row,b_width,b_height))
     for col in range(b_width,s_width,b_width*2):#Second set of rows and cols
         for row in range(b_height,s_height,b_height*2):
-            pygame.draw.rect(win,(255,255,255),(col,row,b_width,b_height))
+            pygame.draw.rect(win,dark_gray,(col,row,b_width,b_height))
     pygame.draw.rect(win,(0,0,0),(0,0,250,s_height))#Black left Column
     pygame.draw.rect(win,blue,(125-(p_width//2),s_height-p_height-5,p_width,p_height))#Progress Bar
     #Progress Bar
@@ -107,14 +104,9 @@ def redrawGameWindow():
     textbox('$50',180,600,green,black,22)
     pygame.draw.rect(win,red,(100,600,p_width,5))
     pygame.draw.rect(win,green,(100,650-total_money,p_width,total_money))
-<<<<<<< HEAD
     #Sandwich progress
     counter=pygame.image.load("filledcounter.jpg")
     pygame.draw.rect(win,gray,(250,0,200,550))
-=======
-
-    counter=pygame.image.load("marblecounter.jpg")
->>>>>>> 872d292db90ca363af5902ecd339d654546570bb
     win.blit(counter, (450, 250))
     textbox('Sandwich Progress',350,10,white,black,22)
 
