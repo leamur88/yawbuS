@@ -279,6 +279,7 @@ while run:
         elif keys[pygame.K_w]:
             p=3
         elif keys[pygame.K_q]:
+            print("Thank you for playing!")
             run=False
         # print("after winner1")
         # time.sleep(3)
