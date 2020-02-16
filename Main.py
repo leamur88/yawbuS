@@ -29,6 +29,7 @@ black = (0,0,0)
 red=(255,0,0)
 dark_gray=(47,79,79)
 light_gray=(211,211,211)
+gray=(128,128,128)
 
 
 win =pygame.display.set_mode((s_width,s_height))
@@ -90,17 +91,22 @@ def redrawGameWindow():
             pygame.draw.rect(win,dark_gray,(col,row,b_width,b_height))
     pygame.draw.rect(win,(0,0,0),(0,0,250,s_height))#Black left Column
     pygame.draw.rect(win,blue,(125-(p_width//2),s_height-p_height-5,p_width,p_height))#Progress Bar
-    textbox('Progress (200$)',125,s_height-p_height-10,green,black)
-    textbox('$100',180,550,green,black)
+    #Progress Bar
+    textbox('Progress (200$)',125,s_height-p_height-10,green,black,22)
+    textbox('$100',180,550,green,black,22)
     pygame.draw.rect(win,red,(100,550,p_width,5))
-    textbox('$150',180,500,green,black)
+    textbox('$150',180,500,green,black,22)
     pygame.draw.rect(win,red,(100,500,p_width,5))
-    textbox('$50',180,600,green,black)
+    textbox('$50',180,600,green,black,22)
     pygame.draw.rect(win,red,(100,600,p_width,5))
     pygame.draw.rect(win,green,(100,650-total_money,p_width,total_money))
-
+    #Sandwich progress
     counter=pygame.image.load("filledcounter.jpg")
+    pygame.draw.rect(win,gray,(250,0,200,550))
     win.blit(counter, (450, 250))
+    textbox('Sandwich Progress',350,10,white,black,22)
+
+
     if left:
         win.blit(walkLeft, (x,y))
     elif right:
@@ -109,9 +115,9 @@ def redrawGameWindow():
         win.blit(char, (x,y))
 
 #Progress Bar
-def textbox(text,x,y,fontcolor,backgroundcolor): #Us this to make textboxes
+def textbox(text,x,y,fontcolor,backgroundcolor,fontsize): #Us this to make textboxes
 
-    font = pygame.font.Font('freesansbold.ttf', 22)
+    font = pygame.font.Font('freesansbold.ttf', fontsize)
     text = font.render(text, True, fontcolor, backgroundcolor)
     textRect = text.get_rect()
     textRect.center = (x,y)
