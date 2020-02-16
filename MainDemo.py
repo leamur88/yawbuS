@@ -17,7 +17,7 @@ walkRight = pygame.image.load('guy_right.png')
 walkLeft = pygame.image.load('guy_left.png')
 char = pygame.image.load('guy_up.png')
 ham = pygame.image.load('leBurger.gif')
-vel = 5
+vel = 10
 left = False
 right = False
 
@@ -54,9 +54,9 @@ class Ingredients:
         self.cost = cost
 
 #bread
-GR = Ingredients("Golden Retriever.png", "bread", 'g', 2)
-Huskie = Ingredients("Huskie.png", "bread", 'h', 3)
-Dachshund = Ingredients("Dachshund.png", "bread", 'd', 1)
+GR = Ingredients("Golden Retriever.png", "bread", 'g', 100)
+Huskie = Ingredients("Huskie.png", "bread", 'h', 100)
+Dachshund = Ingredients("Dachshund.png", "bread", 'd', 100)
 
 #meat
 Heart = Ingredients("Heart.png", "meat", 'h', 5)
@@ -177,8 +177,8 @@ def textbox(text,x,y,fontcolor,backgroundcolor,fontsize): #Us this to make textb
 pygame.display.update()
 n=0 #Hamburger counter
 velocity=1  #Hamburger velocity
-floatvelo=1#to make Hamburger only increment every 4
-p=1#For Last Pic
+floatvelo=1
+p=1 #final picture
 while run:
 
     keys = pygame.key.get_pressed()
@@ -271,19 +271,15 @@ while run:
             win.blit(winState, (0, 0))
             textbox("Press [q]",1150,375,white,black,22)
             textbox("to end...",1150,400,white,black,22)
-            textbox("or [r] to continue",1150,425,white,black,22)
-            textbox("at a faster pace...",1150,450,white,black,22)
         if keys[pygame.K_e]:
             p=2
+            win.blit(winState, (0, 0))
+            textbox("Press [w]",1150,375,white,black,22)
+            textbox("to continue...",1150,400,white,black,22)
         elif keys[pygame.K_w]:
             p=3
         elif keys[pygame.K_q]:
-            print("Thanks for playing")
             run=False
-        elif keys[pygame.K_r]:
-            vel+=1
-            p=1
-            total_money=0
         # print("after winner1")
         # time.sleep(3)
         # win.blit(winner2, (0, 0))
