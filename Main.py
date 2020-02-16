@@ -58,7 +58,7 @@ Fire = Ingredients("fire,png", "sauce", 'f', 10)
 Mud = Ingredients("mud.gif", "sauce", 'm', 10)
 Slime = Ingredients("Slime.gif", 'sauce', 's', 10)
 
-menu = [Heart, Brain, Liver, Pancreas, FireHydrant, Limo, Statue, Surfboard, Fire, Mud, Slime]
+menu = [Heart, Brain, Liver, Lung, FireHydrant, Limo, Statue, Surfboard, Fire, Mud, Slime]
 bread = [GR, Huskie, Dachshund]
 class Hamburgers:
     def __init__(self, x, order):
