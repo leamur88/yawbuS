@@ -16,6 +16,7 @@ total_money=0
 walkRight = pygame.image.load('guy_right.png')
 walkLeft = pygame.image.load('guy_left.png')
 char = pygame.image.load('guy_up.png')
+ham = pygame.image.load('leBurger.gif')
 vel = 5
 left = False
 right = False
@@ -64,21 +65,24 @@ Surfboard = Ingredients("surfboard.png", 'veg', 'b', 10)
 Fire = Ingredients("fire,png", "sauce", 'f', 10)
 Mud = Ingredients("mud.gif", "sauce", 'm', 10)
 Slime = Ingredients("Slime.gif", 'sauce', 's', 10)
-
-menu = [Heart, Brain, Liver, Lung, FireHydrant, Limo, Statue, Surfboard, Fire, Mud, Slime]
+meat = [Heart, Brain, Liver, Lung]
+veggie = [FireHydrant, Limo, Statue, Surfboard]
+sauce = [Fire, Mud, Slime]
 bread = [GR, Huskie, Dachshund]
 class Hamburgers:
-    def __init__(self, x):
+    def __init__(self, x,y):
         self.x = x
+        self.y =y
         self.orderSum = 0
         self.order = []
-        createOrder()
+        self.createOrder()
 
-    def createOrder():
+    def createOrder(self):
         self.order.append(bread.randomChoice())
-        for i in range(3):
-            self.order.append(menu.randomChoice())
-            self.orderSum = self.orderSum + self.order[i].cost
+        self.order.append(meat.randomChoice())
+        self.order.append(veggie.randomChoice())
+        self.order.append(sauce.randomChoice())
+        self.order.append(self.order[0])
 
 def redrawGameWindow():
     #Background
@@ -100,6 +104,22 @@ def redrawGameWindow():
     textbox('$50',180,600,green,black,22)
     pygame.draw.rect(win,red,(100,600,p_width,5))
     pygame.draw.rect(win,green,(100,650-total_money,p_width,total_money))
+    #Hamburgers
+    win.blit(ham,(current_ham.x,current_ham.y))
+
+
+    #Reciept
+    textbox("Current Order",125,15,white,black,30)
+    pygame.draw.rect(win,white,(0,30,250,5))
+
+
+
+
+
+
+
+
+
     #Sandwich progress
     counter=pygame.image.load("filledcounter.jpg")
     pygame.draw.rect(win,gray,(250,250,200,300))
@@ -118,6 +138,7 @@ def redrawGameWindow():
     if ingredient_list[3]!=0:
         sauce = pygame.image.load(ingredient_list[3])
         win.blit(sauce, (300,300))
+    #Movement
     if left:
         win.blit(walkLeft, (x,y))
     elif right:
@@ -125,7 +146,7 @@ def redrawGameWindow():
     else:
         win.blit(char, (x,y))
 
-#Progress Bar
+
 def textbox(text,x,y,fontcolor,backgroundcolor,fontsize): #Us this to make textboxes
 
     font = pygame.font.Font('freesansbold.ttf', fontsize)
@@ -136,11 +157,19 @@ def textbox(text,x,y,fontcolor,backgroundcolor,fontsize): #Us this to make textb
 
 
 pygame.display.update()
-
-while  run:
+n=0
+while run:
 
     keys = pygame.key.get_pressed()
 
+    if n==0:
+        n=1
+        current_ham = Hamburgers(1250,75)
+    current_ham.x-=1
+    if total_money < 200:
+        if current_ham.x <=250:
+            print("You have taken too long to complete the leBurger's order, better luck next time...")
+            run=False
     if keys[pygame.K_LEFT] and x > 250+vel:
         x -= vel
         left = True
@@ -191,6 +220,11 @@ while  run:
         ingredient_list[3] = "mud.gif"
     elif keys[pygame.K_s] and x > 405 and x < 550:
         ingredient_list[3] = "Slime.gif"
+
+    if ingredient_list == current_ham.order:
+        n=0
+        total_money+=25
+
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
             run=False
