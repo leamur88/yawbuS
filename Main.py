@@ -12,7 +12,6 @@ p_height=200 #progress bar
 p_width=55
 progress=200
 total_money=0
-
 #moving
 walkRight = pygame.image.load('guy_right.png')
 walkLeft = pygame.image.load('guy_left.png')
@@ -93,7 +92,7 @@ def redrawGameWindow():
     pygame.draw.rect(win,(0,0,0),(0,0,250,s_height))#Black left Column
     pygame.draw.rect(win,blue,(125-(p_width//2),s_height-p_height-5,p_width,p_height))#Progress Bar
     #Progress Bar
-    textbox('Progress (200$)',125,s_height-p_height-10,green,black,22)
+    textbox('Progress ($200)',125,s_height-p_height-10,green,black,22)
     textbox('$100',180,550,green,black,22)
     pygame.draw.rect(win,red,(100,550,p_width,5))
     textbox('$150',180,500,green,black,22)
@@ -196,10 +195,9 @@ while  run:
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
             run=False
-#1045
-#795
-#550
-#405
+
     redrawGameWindow()
+    if total_money>=200:
+        win.fill(white)
     pygame.display.update()
 pygame.quit()
