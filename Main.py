@@ -34,7 +34,6 @@ gray=(128,128,128)
 #list of ingredients
 ingredient_list = [0, 0, 0, 0, 0]
 
-total_money = 0
 
 win =pygame.display.set_mode((s_width,s_height))
 pygame.display.set_caption("Sandwich Time")
@@ -47,8 +46,6 @@ class Ingredients:
         self.type = type
         self.select = select
         self.cost = cost
-
-ingredients=["Golden_Retriever.png","heart.png","brain.png","limo.png","Golden_Retriever.png"]
 
 
 GR = Ingredients("Golden_Retriever.png", "bread", 'g', 10)
@@ -109,17 +106,17 @@ def redrawGameWindow():
     pygame.draw.rect(win,gray,(250,250,200,300))
     win.blit(counter, (450, 250))
     textbox('Sandwich Progress',350,262,white,black,22)
-    if ingredients[0]!=0:
+    if ingredient_list[0]!=0:
         bread = pygame.image.load(ingredients[0])
         win.blit(bread, (300,20))
         win.blit(bread, (300,400))
-    if ingredients[1]!=0:
+    if ingredient_list[1]!=0:
         meat = pygame.image.load(ingredients[1])
         win.blit(meat, (300,110))
-    if ingredients[2]!=0:
+    if ingredient_list[2]!=0:
         veggie = pygame.image.load(ingredients[2])
         win.blit(veggie, (300,200))
-    if ingredients[3]!=0:
+    if ingredient_list[3]!=0:
         sauce = pygame.image.load(ingredients[3])
         win.blit(sauce, (300,300))
     if left:
