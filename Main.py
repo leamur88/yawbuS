@@ -12,11 +12,11 @@ p_height=200 #progress bar
 p_width=55
 progress=200
 total_money=0
-
 #moving
 walkRight = pygame.image.load('guy_right.png')
 walkLeft = pygame.image.load('guy_left.png')
 char = pygame.image.load('guy_up.png')
+ham = pygame.image.load('leBurger.gif')
 vel = 5
 left = False
 right = False
@@ -42,44 +42,53 @@ run= True
 
 class Ingredients:
     def __init__(self, image_id, type, select, cost):
-        self.id = id
+        self.id = image_id
         self.type = type
         self.select = select
         self.cost = cost
 
-
+#bread
 GR = Ingredients("Golden_Retriever.png", "bread", 'g', 10)
 Huskie = Ingredients("Huskie.png", "bread", 'h', 10)
 Dachshund = Ingredients("Dachshund.png", "bread", 'd', 10)
 
+#meat
 Heart = Ingredients("heart.png", "meat", 'h', 10)
 Brain = Ingredients("brain.png", "meat", 'b', 10)
 Liver = Ingredients("liver.png", 'meat', 'l', 10)
 Lung = Ingredients('lung.png', 'meat', 'u', 10)
 
+#veggie
 FireHydrant = Ingredients("firehydrant.png", 'veg', 'f', 10)
 Limo = Ingredients("limo.png", 'veg', 'l', 10)
 Statue = Ingredients("statue.png", 'veg', 's', 10)
 Surfboard = Ingredients("surfboard.png", 'veg', 'b', 10)
 
-Fire = Ingredients("fire,png", "sauce", 'f', 10)
+#sauce
+Fire = Ingredients("fire.png", "sauce", 'f', 10)
 Mud = Ingredients("mud.gif", "sauce", 'm', 10)
-Slime = Ingredients("Slime.gif", 'sauce', 's', 10)
+Slime = Ingredients("slime.gif", 'sauce', 's', 10)
 
-menu = [Heart, Brain, Liver, Lung, FireHydrant, Limo, Statue, Surfboard, Fire, Mud, Slime]
-bread = [GR, Huskie, Dachshund]
+bread = [GR.id, Huskie.id, Dachshund.id]
+meat = [Heart.id, Brain.id, Liver.id, Lung.id]
+veggie = [FireHydrant.id, Limo.id, Statue.id, Surfboard.id]
+sauce = [Fire.id, Mud.id, Slime.id]
+
 class Hamburgers:
-    def __init__(self, x):
+    def __init__(self, x,y,velo):
         self.x = x
+        self.y =y
         self.orderSum = 0
         self.order = []
-        createOrder()
+        self.velo=velo
+        self.createOrder()
 
-    def createOrder():
-        self.order.append(bread.randomChoice())
-        for i in range(3):
-            self.order.append(menu.randomChoice())
-            self.orderSum = self.orderSum + self.order[i].cost
+    def createOrder(self):
+        self.order.append(random.choice(bread))
+        self.order.append(random.choice(meat))
+        self.order.append(random.choice(veggie))
+        self.order.append(random.choice(sauce))
+        self.order.append(self.order[0])
 
 def redrawGameWindow():
     #Background
@@ -93,7 +102,7 @@ def redrawGameWindow():
     pygame.draw.rect(win,(0,0,0),(0,0,250,s_height))#Black left Column
     pygame.draw.rect(win,blue,(125-(p_width//2),s_height-p_height-5,p_width,p_height))#Progress Bar
     #Progress Bar
-    textbox('Progress (200$)',125,s_height-p_height-10,green,black,22)
+    textbox('Progress ($200)',125,s_height-p_height-10,green,black,22)
     textbox('$100',180,550,green,black,22)
     pygame.draw.rect(win,red,(100,550,p_width,5))
     textbox('$150',180,500,green,black,22)
@@ -101,6 +110,23 @@ def redrawGameWindow():
     textbox('$50',180,600,green,black,22)
     pygame.draw.rect(win,red,(100,600,p_width,5))
     pygame.draw.rect(win,green,(100,650-total_money,p_width,total_money))
+    #Hamburgers
+    win.blit(ham,(current_ham.x,current_ham.y))
+
+
+    #Reciept
+    textbox("Current Order",125,15,white,black,30)
+    pygame.draw.rect(win,white,(0,30,250,5))
+
+    pygame.draw.rect(win,light_gray,(20,45,210,300))
+
+
+
+
+
+
+
+
     #Sandwich progress
     counter=pygame.image.load("filledcounter.jpg")
     pygame.draw.rect(win,gray,(250,250,200,300))
@@ -119,6 +145,7 @@ def redrawGameWindow():
     if ingredient_list[3]!=0:
         sauce = pygame.image.load(ingredient_list[3])
         win.blit(sauce, (300,300))
+    #Movement
     if left:
         win.blit(walkLeft, (x,y))
     elif right:
@@ -126,7 +153,7 @@ def redrawGameWindow():
     else:
         win.blit(char, (x,y))
 
-#Progress Bar
+
 def textbox(text,x,y,fontcolor,backgroundcolor,fontsize): #Us this to make textboxes
 
     font = pygame.font.Font('freesansbold.ttf', fontsize)
@@ -137,11 +164,21 @@ def textbox(text,x,y,fontcolor,backgroundcolor,fontsize): #Us this to make textb
 
 
 pygame.display.update()
-
-while  run:
+n=0 #Hamburger counter
+velocity=1  #Hamburger velocity
+while run:
 
     keys = pygame.key.get_pressed()
 
+    if n==0:
+        n=1
+        current_ham = Hamburgers(1250,75,1)
+        print(current_ham.order)
+    current_ham.x-=current_ham.velo
+    if total_money < 200:
+        if current_ham.x <=250:
+            print("You have taken too long to complete the leBurger's order, better luck next time...")
+            run=False
     if keys[pygame.K_LEFT] and x > 250+vel:
         x -= vel
         left = True
@@ -156,50 +193,55 @@ while  run:
 
     #Bread
     if keys[pygame.K_g] and x > 1045:
-        ingredient_list[0] = "Golden_Retriever.png"
-        ingredient_list[4] = "Golden_Retriever.png"
+        ingredient_list[0] = GR.id
+        ingredient_list[4] = GR.id
     elif keys[pygame.K_h] and x > 1045:
-        ingredient_list[0] = "Huskie.png"
-        ingredient_list[4] = "Huskie.png"
+        ingredient_list[0] = Huskie.id
+        ingredient_list[4] = Huskie.id
     elif keys[pygame.K_d] and x > 1045:
-        ingredient_list[0] = "Dachshund.png"
-        ingredient_list[4] = "Dachshund.png"
+        ingredient_list[0] = Dachshund.id
+        ingredient_list[4] = Dachshund.id
 
     #Meat
     elif keys[pygame.K_h] and x > 795 and x < 1045:
-        ingredient_list[1] = "heart.png"
+        ingredient_list[1] = Heart.id
     elif keys[pygame.K_b] and x > 795 and x < 1045:
-        ingredient_list[1] = "brain.png"
+        ingredient_list[1] = Brain.id
     elif keys[pygame.K_l] and x > 795 and x < 1045:
-        ingredient_list[1] = "liver.png"
+        ingredient_list[1] = Liver.id
     elif keys[pygame.K_u] and x > 795 and x < 1045:
-        ingredient_list[1] = "lung.png"
+        ingredient_list[1] = Lung.id
 
     #Veg
     elif keys[pygame.K_f] and x > 550 and x < 795:
-        ingredient_list[2] = "firehydrant.png"
+        ingredient_list[2] = FireHydrant.id
     elif keys[pygame.K_l] and x > 550 and x < 795:
-        ingredient_list[2] = "limo.png"
+        ingredient_list[2] = Limo.id
     elif keys[pygame.K_s] and x > 550 and x < 795:
-        ingredient_list[2] = "statue.png"
+        ingredient_list[2] = Statue.id
     elif keys[pygame.K_b] and x > 550 and x < 795:
-        ingredient_list[2] = "surfboard.png"
+        ingredient_list[2] = Surfboard.id
 
     #Sauce
     elif keys[pygame.K_f] and x > 405 and x < 550:
-        ingredient_list[3] = "fire.png"
+        ingredient_list[3] = Fire.id
     elif keys[pygame.K_m] and x > 405 and x < 550:
-        ingredient_list[3] = "mud.gif"
+        ingredient_list[3] = Mud.id
     elif keys[pygame.K_s] and x > 405 and x < 550:
-        ingredient_list[3] = "Slime.gif"
+        ingredient_list[3] = Slime.id
+
+    if ingredient_list == current_ham.order:
+        n=0
+        velocity+=1
+        for ingred in ingredient_list:
+            total_money+= ingred.cost
 
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
             run=False
-#1045
-#795
-#550
-#405
+
     redrawGameWindow()
+    if total_money>=200:
+        win.fill(white)
     pygame.display.update()
 pygame.quit()
