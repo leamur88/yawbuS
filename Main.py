@@ -31,6 +31,9 @@ dark_gray=(47,79,79)
 light_gray=(211,211,211)
 gray=(128,128,128)
 
+#list of ingredients
+ingredient_list = [0, 0, 0, 0, 0]
+
 total_money = 0
 
 win =pygame.display.set_mode((s_width,s_height))
@@ -58,10 +61,10 @@ Dachshund = Ingredients("Dachshund.png", "bread", 'd', 10)
 Heart = Ingredients("heart.png", "meat", 'h', 10)
 Brain = Ingredients("brain.png", "meat", 'b', 10)
 Liver = Ingredients("liver.png", 'meat', 'l', 10)
-Lung = Ingredients('lung.png', 'meat', 'p', 10)
+Lung = Ingredients('lung.png', 'meat', 'u', 10)
 
 FireHydrant = Ingredients("firehydrant.png", 'veg', 'f', 10)
-Limo = Ingredients("limo.png", 'veg', 'a', 10)
+Limo = Ingredients("limo.png", 'veg', 'l', 10)
 Statue = Ingredients("statue.png", 'veg', 's', 10)
 Surfboard = Ingredients("surfboard.png", 'veg', 'b', 10)
 
@@ -146,6 +149,47 @@ while  run:
         left = False
         right = False
 
+    #Bread
+    if keys[pygame.K_g] and x > 1045:
+        ingredient_list[0] = "Golden_Retriever.png"
+        ingredient_list[4] = "Golden_Retriever.png"
+    elif keys[pygame.K_h] and x > 1045:
+        ingredient_list[0] = "Huskie.png"
+        ingredient_list[4] = "Huskie.png"
+    elif keys[pygame.K_d] and x > 1045:
+        ingredient_list[0] = "Dachshund.png"
+        ingredient_list[4] = "Dachshund.png"
+
+    #Meat
+    elif keys[pygame.K_h] and x > 795 and x < 1045:
+        ingredient_list[1] = "heart.png"
+    elif keys[pygame.K_b] and x > 795 and x < 1045:
+        ingredient_list[1] = "brain.png"
+    elif keys[pygame.K_l] and x > 795 and x < 1045:
+        ingredient_list[1] = "liver.png"
+    elif keys[pygame.K_u] and x > 795 and x < 1045:
+        ingredient_list[1] = "lung.png"
+
+    #Veg
+    elif keys[pygame.K_f] and x > 550 and x < 795:
+        ingredient_list[2] = "firehydrant.png"
+    elif keys[pygame.K_l] and x > 550 and x < 795:
+        ingredient_list[2] = "limo.png"
+    elif keys[pygame.K_s] and x > 550 and x < 795:
+        ingredient_list[2] = "statue.png"
+    elif keys[pygame.K_b] and x > 550 and x < 795:
+        ingredient_list[2] = "surfboard.png"
+
+    #Sauce
+    elif keys[pygame.K_f] and x > 405 and x < 550:
+        ingredient_list[3] = "fire.png"
+    elif keys[pygame.K_m] and x > 405 and x < 550:
+        ingredient_list[3] = "mud.gif"
+    elif keys[pygame.K_s] and x > 405 and x < 550:
+        ingredient_list[3] = "Slime.gif"
+
+
+    print(ingredient_list)
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
             run=False
