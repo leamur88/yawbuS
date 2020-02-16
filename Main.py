@@ -20,6 +20,8 @@ ham = pygame.image.load('leBurger.gif')
 vel = 5
 left = False
 right = False
+#for the intro
+beginning = 0
 
 #Colors
 white = (255, 255, 255)
@@ -35,6 +37,7 @@ gray=(128,128,128)
 ingredient_list = [0, 0, 0, 0, 0]
 
 #Winning backgrounds
+intro = pygame.image.load('intro.png')
 winner1 = pygame.image.load("lastScene1.png")
 winner2 = pygame.image.load('lastScene2.png')
 winner3 = pygame.image.load('lastScene3.png')
@@ -44,8 +47,8 @@ winState = winner1
 win =pygame.display.set_mode((s_width,s_height))
 pygame.display.set_caption("Sandwich Time")
 pygame.init()
-run= True
 
+run= True
 class Ingredients:
     def __init__(self, image_id, type, select, cost):
         self.id = image_id
