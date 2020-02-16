@@ -107,17 +107,17 @@ def redrawGameWindow():
     win.blit(counter, (450, 250))
     textbox('Sandwich Progress',350,262,white,black,22)
     if ingredient_list[0]!=0:
-        bread = pygame.image.load(ingredients[0])
-        win.blit(bread, (300,20))
-        win.blit(bread, (300,400))
+        bread = pygame.image.load(ingredient_list[0])
+        win.blit(bread, (300,270))
+        win.blit(bread, (300,460))
     if ingredient_list[1]!=0:
-        meat = pygame.image.load(ingredients[1])
-        win.blit(meat, (300,110))
+        meat = pygame.image.load(ingredient_list[1])
+        win.blit(meat, (300,400))
     if ingredient_list[2]!=0:
-        veggie = pygame.image.load(ingredients[2])
-        win.blit(veggie, (300,200))
+        veggie = pygame.image.load(ingredient_list[2])
+        win.blit(veggie, (300,370))
     if ingredient_list[3]!=0:
-        sauce = pygame.image.load(ingredients[3])
+        sauce = pygame.image.load(ingredient_list[3])
         win.blit(sauce, (300,300))
     if left:
         win.blit(walkLeft, (x,y))
