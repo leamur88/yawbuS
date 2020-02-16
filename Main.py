@@ -10,7 +10,7 @@ b_height=100
 p_height=200 #progress bar
 p_width=55
 progress=200
-
+total_money=0
 #moving
 walkRight = pygame.image.load('guy_right.png')
 walkLeft = pygame.image.load('guy_left.png')
@@ -25,37 +25,43 @@ green = (0, 255, 0)
 blue = (0, 0, 128)
 black = (0,0,0)
 
+total_money = 0
+
 win =pygame.display.set_mode((s_width,s_height))
 pygame.display.set_caption("Sandwich Time")
 pygame.init()
 run= True
 
 class Ingredients:
-    def __init__(self, id, type, select):
+    def __init__(self, image_id, type, select, cost):
         self.id = id
         self.type = type
+        self.select = select
+        self.cost = cost
 
 
-GR = Ingredients("Golden Retriever", "bread", 'g')
-Huskie = Ingredients("Huskie", "bread", 'h')
-Dachshund = Ingredients("Dachshund", "bread", 'd')
+GR = Ingredients("Golden_Retriever.png", "bread", 'g', 10)
+Huskie = Ingredients("Huskie.png", "bread", 'h', 10)
+Dachshund = Ingredients("Dachshund.png", "bread", 'd', 10)
 
-Heart = Ingredients("Heart", "meat", 'h')
-Brain = Ingredients("Brain", "meat", 'b')
-Liver = Ingredients("Liver", 'meat', 'l')
-Pancreas = Ingredients("Pancreas", 'meat', 'p')
+Heart = Ingredients("heart.png", "meat", 'h', 10)
+Brain = Ingredients("brain.png", "meat", 'b', 10)
+Liver = Ingredients("liver.png", 'meat', 'l', 10)
+Lung = Ingredients('lung.png', 'meat', 'p', 10)
 
-FireHydrant = Ingredients("FireHydrant", 'veg', 'f')
-Limo = Ingredients("Limo", 'veg', 'a')
-Statue = Ingredients("Statue", 'veg', 's')
-Surfboard = Ingredients("Surfboard", 'veg', 'b')
+FireHydrant = Ingredients("firehydrant.png", 'veg', 'f', 10)
+Limo = Ingredients("limo.png", 'veg', 'a', 10)
+Statue = Ingredients("statue.png", 'veg', 's', 10)
+Surfboard = Ingredients("surfboard.png", 'veg', 'b', 10)
 
-Fire = Ingredients("Fire", "sauce", 'f')
-Mud = Ingredients("Mud", "sauce", 'm')
-Slime = Ingredients("Slime", 'sauce', 's')
+Fire = Ingredients("fire,png", "sauce", 'f', 10)
+Mud = Ingredients("mud.gif", "sauce", 'm', 10)
+Slime = Ingredients("Slime.gif", 'sauce', 's', 10)
 
+menu = [Heart, Brain, Liver, Pancreas, FireHydrant, Limo, Statue, Surfboard, Fire, Mud, Slime]
+bread = [GR, Huskie, Dachshund]
 class Hamburgers:
-    def __init__(self, x):
+    def __init__(self, x, order):
         print("")
 
 
@@ -72,9 +78,16 @@ def redrawGameWindow():
             pygame.draw.rect(win,(255,255,255),(col,row,b_width,b_height))
     pygame.draw.rect(win,(0,0,0),(0,0,250,s_height))#Black left Column
     pygame.draw.rect(win,blue,(125-(p_width//2),s_height-p_height-5,p_width,p_height))#Progress Bar
-    textbox('Progress',125,s_height-p_height-10,green,black)
+    textbox('Progress (200$)',125,s_height-p_height-10,green,black)
+    textbox('$100',175,550,green,black)
+    textbox('$150',180,500,green,black)
+    textbox('$50',180,600,green,black)
 
+<<<<<<< HEAD
     counter=pygame.image.load("filledcounter.jpg")
+=======
+    counter=pygame.image.load("marblecounter.jpg")
+>>>>>>> 4f648f4c7c2cbdead1184dba6e628505f4a840c7
     win.blit(counter, (450, 250))
     if left:
         win.blit(walkLeft, (x,y))
@@ -83,7 +96,7 @@ def redrawGameWindow():
     else:
         win.blit(char, (x,y))
 
-#Progress Bar
+
 def textbox(text,x,y,fontcolor,backgroundcolor): #Us this to make textboxes
 
     font = pygame.font.Font('freesansbold.ttf', 22)
