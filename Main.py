@@ -296,6 +296,7 @@ while run:
         elif keys[pygame.K_r]:
             vel+=1
             p=1
+            winState = winner1
             total_money=0
         # print("after winner1")
         # time.sleep(3)
