@@ -29,6 +29,13 @@ win =pygame.display.set_mode((s_width,s_height))
 pygame.display.set_caption("Sandwich Time")
 pygame.init()
 run= True
+
+class Ingredients:
+    def __init__(self, id, type, select):
+        self.id = id
+        self.type = type
+
+
 GR = Ingredients("Golden Retriever", "bread", 'g')
 Huskie = Ingredients("Huskie", "bread", 'h')
 Dachshund = Ingredients("Dachshund", "bread", 'd')
@@ -52,10 +59,7 @@ class Hamburgers:
         print("")
 
 
-class Ingredients:
-    def __init__(self, id, type, select):
-        self.id = id
-        self.type = type
+
 
 def redrawGameWindow():
     #Background
@@ -95,7 +99,7 @@ while  run:
 
     keys = pygame.key.get_pressed()
 
-    if keys[pygame.K_LEFT] and x > vel:
+    if keys[pygame.K_LEFT] and x > 250+vel:
         x -= vel
         left = True
         right = False
