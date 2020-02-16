@@ -1,5 +1,6 @@
 import pygame
 import time
+import random
 #Variables
 s_width = 1250 #Screen Size
 s_height = 650
@@ -10,7 +11,7 @@ b_height=100
 p_height=200 #progress bar
 p_width=55
 progress=200
-total_money=0
+
 #moving
 walkRight = pygame.image.load('guy_right.png')
 walkLeft = pygame.image.load('guy_left.png')
@@ -63,17 +64,20 @@ Slime = Ingredients("Slime.gif", 'sauce', 's', 10)
 menu = [Heart, Brain, Liver, Lung, FireHydrant, Limo, Statue, Surfboard, Fire, Mud, Slime]
 bread = [GR, Huskie, Dachshund]
 class Hamburgers:
-    def __init__(self, x, order):
-        print("")
+    def __init__(self, x):
+        self.x = x
+        self.order = []
+        createOrder()
+    def createOrder():
+        self.order.append(bread.randomChoice())
+        for i in range(3):
+            self.order.append(menu.randomChoice())
 
 
-class player():
-    def __init__(self,X,Y):
-        self.x = X
-        self.y = Y
 
 
-me=player(x,y)
+
+
 def redrawGameWindow():
     #Background
     win.fill(light_gray)#Black Background
@@ -85,6 +89,7 @@ def redrawGameWindow():
             pygame.draw.rect(win,dark_gray,(col,row,b_width,b_height))
     pygame.draw.rect(win,(0,0,0),(0,0,250,s_height))#Black left Column
     pygame.draw.rect(win,blue,(125-(p_width//2),s_height-p_height-5,p_width,p_height))#Progress Bar
+<<<<<<< HEAD
     textbox('Progress (200$)',125,s_height-p_height-10,green,black)
     textbox('$100',180,550,green,black)
     pygame.draw.rect(win,red,(100,550,p_width,5))
@@ -93,6 +98,9 @@ def redrawGameWindow():
     textbox('$50',180,600,green,black)
     pygame.draw.rect(win,red,(100,600,p_width,5))
     pygame.draw.rect(win,green,(100,650-total_money,p_width,total_money))
+=======
+    textbox('Progress',125,s_height-p_height-10,green,black)
+>>>>>>> 25a9a89eca198fff7e8148ce306ed34478b40f38
 
     counter=pygame.image.load("filledcounter.jpg")
     win.blit(counter, (450, 250))
@@ -103,7 +111,7 @@ def redrawGameWindow():
     else:
         win.blit(char, (x,y))
 
-
+#Progress Bar
 def textbox(text,x,y,fontcolor,backgroundcolor): #Us this to make textboxes
 
     font = pygame.font.Font('freesansbold.ttf', 22)
