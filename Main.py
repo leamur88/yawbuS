@@ -188,8 +188,6 @@ while  run:
     elif keys[pygame.K_s] and x > 405 and x < 550:
         ingredient_list[3] = "Slime.gif"
 
-
-    print(ingredient_list)
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
             run=False
