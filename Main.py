@@ -45,10 +45,7 @@ class Ingredients:
         self.select = select
         self.cost = cost
 
-current_Bread = Ingredients('', '', '', 0)
-first_choice = Ingredients('', '', '', 0)
-second_choice = Ingredients('', '', '', 0)
-third_choice = Ingredients('', '', '', 0)
+ingredients=["Golden_Retriever.png","heart.png","brain.png","limo.png","Golden_Retriever.png"]
 
 
 GR = Ingredients("Golden_Retriever.png", "bread", 'g', 10)
@@ -106,11 +103,22 @@ def redrawGameWindow():
     pygame.draw.rect(win,green,(100,650-total_money,p_width,total_money))
     #Sandwich progress
     counter=pygame.image.load("filledcounter.jpg")
-    pygame.draw.rect(win,gray,(250,0,200,550))
+    pygame.draw.rect(win,gray,(250,250,200,300))
     win.blit(counter, (450, 250))
-    textbox('Sandwich Progress',350,10,white,black,22)
-
-
+    textbox('Sandwich Progress',350,262,white,black,22)
+    if ingredients[0]!=0:
+        bread = pygame.image.load(ingredients[0])
+        win.blit(bread, (300,20))
+        win.blit(bread, (300,400))
+    if ingredients[1]!=0:
+        meat = pygame.image.load(ingredients[1])
+        win.blit(meat, (300,110))
+    if ingredients[2]!=0:
+        veggie = pygame.image.load(ingredients[2])
+        win.blit(veggie, (300,200))
+    if ingredients[3]!=0:
+        sauce = pygame.image.load(ingredients[3])
+        win.blit(sauce, (300,300))
     if left:
         win.blit(walkLeft, (x,y))
     elif right:
@@ -149,7 +157,10 @@ while  run:
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
             run=False
-
+#1045
+#795
+#550
+#405
     redrawGameWindow()
     pygame.display.update()
 pygame.quit()
