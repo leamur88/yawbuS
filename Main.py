@@ -88,7 +88,7 @@ def redrawGameWindow():
     textbox('$150',180,500,green,black)
     textbox('$50',180,600,green,black)
 
-    counter=pygame.image.load("marblecounter.jpg")
+    counter=pygame.image.load("filledcounter.jpg")
     win.blit(counter, (450, 250))
     if left:
         win.blit(walkLeft, (x,y))
