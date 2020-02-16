@@ -34,19 +34,28 @@ for col in range(b_width,s_width,b_width*2):#Second set of rows and cols
 pygame.draw.rect(win,(0,0,0),(0,0,250,s_height))#Black left Column
 
 #Progress Bar
-def textbox(text,x,y): #Us this to make textboxes
-    pygame.draw.rect(win,blue,(125-(p_width//2),s_height-p_height-5,p_width,p_height))#Progress Bar
+pygame.draw.rect(win,blue,(125-(p_width//2),s_height-p_height-5,p_width,p_height))
+
+def textbox(text,x,y,fontcolor,backgroundcolor): #Use this to make textboxes
     font = pygame.font.Font('freesansbold.ttf', 22)
-    text = font.render(text, True, green, black)
+    text = font.render(text, True, fontcolor, backgroundcolor)
     textRect = text.get_rect()
     textRect.center = (x,y)
     win.blit(text,textRect)
 
 
+counter=pygame.image.load('marblecounter.jpg')
+win.blit(counter,(450,250))
+
+#win.blit(nameofimage(must be loaded prior,x,y)
+#Example
+#fire=pygame.image.load('fire.png')
+#win.blit(fire,(100,100))
+
 pygame.display.update()
 
-while  run:
-    textbox('Progress',125,s_height-p_height-10)
+while run:
+    textbox('Progress',125,s_height-p_height-10,green,black)
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
             run=False
