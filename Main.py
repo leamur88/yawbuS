@@ -29,6 +29,34 @@ win =pygame.display.set_mode((s_width,s_height))
 pygame.display.set_caption("Sandwich Time")
 pygame.init()
 run= True
+GR = Ingredients("Golden Retriever", "bread", 'g')
+Huskie = Ingredients("Huskie", "bread", 'h')
+Dachshund = Ingredients("Dachshund", "bread", 'd')
+
+Heart = Ingredients("Heart", "meat", 'h')
+Brain = Ingredients("Brain", "meat", 'b')
+Liver = Ingredients("Liver", 'meat', 'l')
+Pancreas = Ingredients("Pancreas", 'meat', 'p')
+
+FireHydrant = Ingredients("FireHydrant", 'veg', 'f')
+Limo = Ingredients("Limo", 'veg', 'a')
+Statue = Ingredients("Statue", 'veg', 's')
+Surfboard = Ingredients("Surfboard", 'veg', 'b')
+
+Fire = Ingredients("Fire", "sauce", 'f')
+Mud = Ingredients("Mud", "sauce", 'm')
+Slime = Ingredients("Slime", 'sauce', 's')
+
+class Hamburgers:
+    def __init__(self, x):
+        print("")
+
+
+class Ingredients:
+    def __init__(self, id, type, select):
+        self.id = id
+        self.type = type
+
 def redrawGameWindow():
     #Background
     win.fill((0,0,0))#Black Background
@@ -61,21 +89,13 @@ def textbox(text,x,y,fontcolor,backgroundcolor): #Us this to make textboxes
     win.blit(text,textRect)
 
 
-counter=pygame.image.load('marblecounter.jpg')
-win.blit(counter,(450,250))
-
-#win.blit(nameofimage(must be loaded prior,x,y)
-#Example
-#fire=pygame.image.load('fire.png')
-#win.blit(fire,(100,100))
-
 pygame.display.update()
 
 while  run:
 
     keys = pygame.key.get_pressed()
 
-    if keys[pygame.K_LEFT] and x > vel+250:
+    if keys[pygame.K_LEFT] and x > vel:
         x -= vel
         left = True
         right = False
