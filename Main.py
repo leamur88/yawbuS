@@ -21,8 +21,7 @@ vel = 5
 left = False
 right = False
 #for the intro
-beginning = 0
-
+b=0
 #Colors
 white = (255, 255, 255)
 green = (0, 255, 0)
@@ -182,6 +181,17 @@ n=0 #Hamburger counter
 velocity=1  #Hamburger velocity
 floatvelo=1#to make Hamburger only increment every 4
 p=1#For Last Pic
+run=False
+while run==False and b==0:
+    win.blit(intro,(0,0))
+    pygame.display.update()
+    pygame.time.delay(10000)
+    b = 1
+    run = True
+
+
+
+
 while run:
 
     keys = pygame.key.get_pressed()

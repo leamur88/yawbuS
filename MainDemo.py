@@ -30,6 +30,9 @@ red=(255,0,0)
 dark_gray=(47,79,79)
 light_gray=(211,211,211)
 gray=(128,128,128)
+#Beginning
+intro = pygame.image.load('intro.png')
+b=0
 
 #list of ingredients
 ingredient_list = [0, 0, 0, 0, 0]
@@ -179,6 +182,13 @@ n=0 #Hamburger counter
 velocity=1  #Hamburger velocity
 floatvelo=1
 p=1 #final picture
+run=False
+while run==False and b==0:
+    win.blit(intro,(0,0))
+    pygame.display.update()
+    pygame.time.delay(10000)
+    b = 1
+    run = True
 while run:
 
     keys = pygame.key.get_pressed()
