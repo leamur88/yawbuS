@@ -12,7 +12,6 @@ p_height=200 #progress bar
 p_width=55
 progress=200
 total_money=0
-
 #moving
 walkRight = pygame.image.load('guy_right.png')
 walkLeft = pygame.image.load('guy_left.png')
@@ -192,14 +191,12 @@ while  run:
         ingredient_list[3] = "mud.gif"
     elif keys[pygame.K_s] and x > 405 and x < 550:
         ingredient_list[3] = "Slime.gif"
-
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
             run=False
-#1045
-#795
-#550
-#405
     redrawGameWindow()
+    if total_money>=200:
+        win.fill(white)
+        print("yes")
     pygame.display.update()
 pygame.quit()
