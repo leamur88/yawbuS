@@ -64,7 +64,7 @@ Surfboard = Ingredients("surfboard.png", 'veg', 'b', 10)
 
 Fire = Ingredients("fire,png", "sauce", 'f', 10)
 Mud = Ingredients("mud.gif", "sauce", 'm', 10)
-Slime = Ingredients("Slime.gif", 'sauce', 's', 10)
+Slime = Ingredients("slime.gif", 'sauce', 's', 10)
 meat = [Heart, Brain, Liver, Lung]
 veggie = [FireHydrant, Limo, Statue, Surfboard]
 sauce = [Fire, Mud, Slime]
@@ -219,7 +219,7 @@ while run:
     elif keys[pygame.K_m] and x > 405 and x < 550:
         ingredient_list[3] = "mud.gif"
     elif keys[pygame.K_s] and x > 405 and x < 550:
-        ingredient_list[3] = "Slime.gif"
+        ingredient_list[3] = "slime.gif"
 
     if ingredient_list == current_ham.order:
         n=0
@@ -228,6 +228,7 @@ while run:
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
             run=False
+
     redrawGameWindow()
     if total_money>=200:
         win.fill(white)
