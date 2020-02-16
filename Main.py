@@ -33,28 +33,30 @@ pygame.init()
 run= True
 
 class Ingredients:
-    def __init__(self, image_id, type, select):
+    def __init__(self, image_id, type, select, cost):
         self.id = id
         self.type = type
+        self.select = select
+        self.cost = cost
 
 
-GR = Ingredients("Golden_Retriever.png", "bread", 'g')
-Huskie = Ingredients("Huskie.png", "bread", 'h')
-Dachshund = Ingredients("Dachshund.png", "bread", 'd')
+GR = Ingredients("Golden_Retriever.png", "bread", 'g', 10)
+Huskie = Ingredients("Huskie.png", "bread", 'h', 10)
+Dachshund = Ingredients("Dachshund.png", "bread", 'd', 10)
 
-Heart = Ingredients("heart.png", "meat", 'h')
-Brain = Ingredients("brain.png", "meat", 'b')
-Liver = Ingredients("liver.png", 'meat', 'l')
-Lung = Ingredients('lung.png', 'meat', 'p')
+Heart = Ingredients("heart.png", "meat", 'h', 10)
+Brain = Ingredients("brain.png", "meat", 'b', 10)
+Liver = Ingredients("liver.png", 'meat', 'l', 10)
+Lung = Ingredients('lung.png', 'meat', 'p', 10)
 
-FireHydrant = Ingredients("firehydrant.png", 'veg', 'f')
-Limo = Ingredients("limo.png", 'veg', 'a')
-Statue = Ingredients("statue.png", 'veg', 's')
-Surfboard = Ingredients("surfboard.png", 'veg', 'b')
+FireHydrant = Ingredients("firehydrant.png", 'veg', 'f', 10)
+Limo = Ingredients("limo.png", 'veg', 'a', 10)
+Statue = Ingredients("statue.png", 'veg', 's', 10)
+Surfboard = Ingredients("surfboard.png", 'veg', 'b', 10)
 
-Fire = Ingredients("fire,png", "sauce", 'f')
-Mud = Ingredients("mud.gif", "sauce", 'm')
-Slime = Ingredients("Slime.gif", 'sauce', 's')
+Fire = Ingredients("fire,png", "sauce", 'f', 10)
+Mud = Ingredients("mud.gif", "sauce", 'm', 10)
+Slime = Ingredients("Slime.gif", 'sauce', 's', 10)
 
 menu = [Heart, Brain, Liver, Pancreas, FireHydrant, Limo, Statue, Surfboard, Fire, Mud, Slime]
 bread = [GR, Huskie, Dachshund]
