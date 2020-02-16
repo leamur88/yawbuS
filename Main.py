@@ -65,8 +65,13 @@ class Hamburgers:
         print("")
 
 
+class player():
+    def __init__(self,X,Y):
+        self.x = X
+        self.y = Y
 
 
+me=player(x,y)
 def redrawGameWindow():
     #Background
     win.fill((0,0,0))#Black Background
