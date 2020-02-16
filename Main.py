@@ -54,26 +54,26 @@ class Ingredients:
         self.cost = cost
 
 #bread
-GR = Ingredients("Golden_Retriever.png", "bread", 'g', 200)
-Huskie = Ingredients("Huskie.png", "bread", 'h', 200)
-Dachshund = Ingredients("Dachshund.png", "bread", 'd', 200)
+GR = Ingredients("Golden Retriever.png", "bread", 'g', 2)
+Huskie = Ingredients("Huskie.png", "bread", 'h', 3)
+Dachshund = Ingredients("Dachshund.png", "bread", 'd', 1)
 
 #meat
-Heart = Ingredients("heart.png", "meat", 'h', 10)
-Brain = Ingredients("brain.png", "meat", 'b', 10)
-Liver = Ingredients("liver.png", 'meat', 'l', 10)
-Lung = Ingredients('lung.png', 'meat', 'u', 10)
+Heart = Ingredients("Heart.png", "meat", 'h', 5)
+Brain = Ingredients("Brain.png", "meat", 'b', 2)
+Liver = Ingredients("Liver.png", 'meat', 'l', 9)
+Lung = Ingredients('Lung.png', 'meat', 'u', 4)
 
 #veggie
-FireHydrant = Ingredients("firehydrant.png", 'veg', 'f', 10)
-Limo = Ingredients("limo.png", 'veg', 'l', 10)
-Statue = Ingredients("statue.png", 'veg', 's', 10)
-Surfboard = Ingredients("surfboard.png", 'veg', 'b', 10)
+FireHydrant = Ingredients("Fire Hydrant.png", 'veg', 'f', 5)
+Limo = Ingredients("Limo.png", 'veg', 'l', 7)
+Statue = Ingredients("Statue.png", 'veg', 's', 2)
+Surfboard = Ingredients("Surfboard.png", 'veg', 'b', 3)
 
 #sauce
-Fire = Ingredients("fire.png", "sauce", 'f', 10)
-Mud = Ingredients("mud.gif", "sauce", 'm', 10)
-Slime = Ingredients("slime.gif", 'sauce', 's', 10)
+Fire = Ingredients("Fire.png", "sauce", 'f', 2)
+Mud = Ingredients("Mud.gif", "sauce", 'm', 3)
+Slime = Ingredients("Slime.gif", 'sauce', 's', 8)
 
 bread = [GR, Huskie, Dachshund]
 meat = [Heart, Brain, Liver, Lung]
@@ -127,10 +127,10 @@ def redrawGameWindow():
     pygame.draw.rect(win,light_gray,(20,45,210,300))
 
 
-    textbox(current_ham.order[0].id[0: -4] + " " + current_ham.order[0].select,125,60,black,light_gray,20)
-    textbox(current_ham.order[1].id[0: -4] + " " + current_ham.order[1].select,125,80,black,light_gray,20)
-    textbox(current_ham.order[2].id[0: -4] + " " + current_ham.order[2].select,125,100,black,light_gray,20)
-    textbox(current_ham.order[3].id[0: -4] + " " + current_ham.order[3].select,125,120,black,light_gray,20)
+    textbox(current_ham.order[0].id[0: -4] + " [" + current_ham.order[0].select+']',125,60,black,light_gray,20)
+    textbox(current_ham.order[1].id[0: -4] + " [" + current_ham.order[1].select+']',125,80,black,light_gray,20)
+    textbox(current_ham.order[2].id[0: -4] + " [" + current_ham.order[2].select+']',125,100,black,light_gray,20)
+    textbox(current_ham.order[3].id[0: -4] + " [" + current_ham.order[3].select+']',125,120,black,light_gray,20)
 
 
 
@@ -139,7 +139,7 @@ def redrawGameWindow():
 
 
     #Sandwich progress
-    counter=pygame.image.load("filledcounter.jpg")
+    counter=pygame.image.load("filled counter.jpg")
     pygame.draw.rect(win,gray,(250,250,200,300))
     win.blit(counter, (450, 250))
     textbox('Sandwich Progress',350,262,white,black,22)
@@ -177,13 +177,14 @@ def textbox(text,x,y,fontcolor,backgroundcolor,fontsize): #Us this to make textb
 pygame.display.update()
 n=0 #Hamburger counter
 velocity=1  #Hamburger velocity
+floatvelo=1
 while run:
 
     keys = pygame.key.get_pressed()
 
     if n==0:
         n=1
-        current_ham = Hamburgers(1250,75,1)
+        current_ham = Hamburgers(1250,75,velocity)
     current_ham.x-=current_ham.velo
     if total_money < 200:
         if current_ham.x <=250:
@@ -242,9 +243,12 @@ while run:
 
     if ingredient_list == current_ham.order:
         n=0
-        velocity+=1
+        floatvelo+=.25
+        velocity=int(floatvelo//1)
         for ingred in ingredient_list:
             total_money+= ingred.cost
+        ingredient_list=[0,0,0,0,0]
+        pygame.time.delay(300)
 
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
