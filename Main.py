@@ -48,26 +48,26 @@ class Ingredients:
         self.cost = cost
 
 #bread
-GR = Ingredients("Golden_Retriever.png", "bread", 'g', 2)
+GR = Ingredients("Golden Retriever.png", "bread", 'g', 2)
 Huskie = Ingredients("Huskie.png", "bread", 'h', 3)
 Dachshund = Ingredients("Dachshund.png", "bread", 'd', 1)
 
 #meat
-Heart = Ingredients("heart.png", "meat", 'h', 5)
-Brain = Ingredients("brain.png", "meat", 'b', 2)
-Liver = Ingredients("liver.png", 'meat', 'l', 9)
-Lung = Ingredients('lung.png', 'meat', 'u', 4)
+Heart = Ingredients("Heart.png", "meat", 'h', 5)
+Brain = Ingredients("Brain.png", "meat", 'b', 2)
+Liver = Ingredients("Liver.png", 'meat', 'l', 9)
+Lung = Ingredients('Lung.png', 'meat', 'u', 4)
 
 #veggie
-FireHydrant = Ingredients("firehydrant.png", 'veg', 'f', 5)
-Limo = Ingredients("limo.png", 'veg', 'l', 7)
-Statue = Ingredients("statue.png", 'veg', 's', 2)
-Surfboard = Ingredients("surfboard.png", 'veg', 'b', 3)
+FireHydrant = Ingredients("Fire Hydrant.png", 'veg', 'f', 5)
+Limo = Ingredients("Limo.png", 'veg', 'l', 7)
+Statue = Ingredients("Statue.png", 'veg', 's', 2)
+Surfboard = Ingredients("Surfboard.png", 'veg', 'b', 3)
 
 #sauce
-Fire = Ingredients("fire.png", "sauce", 'f', 2)
-Mud = Ingredients("mud.gif", "sauce", 'm', 3)
-Slime = Ingredients("slime.gif", 'sauce', 's', 8)
+Fire = Ingredients("Fire.png", "sauce", 'f', 2)
+Mud = Ingredients("Mud.gif", "sauce", 'm', 3)
+Slime = Ingredients("Slime.gif", 'sauce', 's', 8)
 
 bread = [GR, Huskie, Dachshund]
 meat = [Heart, Brain, Liver, Lung]
@@ -133,7 +133,7 @@ def redrawGameWindow():
 
 
     #Sandwich progress
-    counter=pygame.image.load("filledcounter.jpg")
+    counter=pygame.image.load("filled counter.jpg")
     pygame.draw.rect(win,gray,(250,250,200,300))
     win.blit(counter, (450, 250))
     textbox('Sandwich Progress',350,262,white,black,22)
