@@ -64,7 +64,7 @@ Surfboard = Ingredients("surfboard.png", 'veg', 'b', 10)
 
 Fire = Ingredients("fire,png", "sauce", 'f', 10)
 Mud = Ingredients("mud.gif", "sauce", 'm', 10)
-Slime = Ingredients("Slime.gif", 'sauce', 's', 10)
+Slime = Ingredients("slime.gif", 'sauce', 's', 10)
 
 menu = [Heart, Brain, Liver, Lung, FireHydrant, Limo, Statue, Surfboard, Fire, Mud, Slime]
 bread = [GR, Huskie, Dachshund]
@@ -191,7 +191,7 @@ while  run:
     elif keys[pygame.K_m] and x > 405 and x < 550:
         ingredient_list[3] = "mud.gif"
     elif keys[pygame.K_s] and x > 405 and x < 550:
-        ingredient_list[3] = "Slime.gif"
+        ingredient_list[3] = "slime.gif"
 
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
