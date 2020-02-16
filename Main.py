@@ -92,7 +92,7 @@ def redrawGameWindow():
     pygame.draw.rect(win,(0,0,0),(0,0,250,s_height))#Black left Column
     pygame.draw.rect(win,blue,(125-(p_width//2),s_height-p_height-5,p_width,p_height))#Progress Bar
     #Progress Bar
-    textbox('Progress (200$)',125,s_height-p_height-10,green,black,22)
+    textbox('Progress ($200)',125,s_height-p_height-10,green,black,22)
     textbox('$100',180,550,green,black,22)
     pygame.draw.rect(win,red,(100,550,p_width,5))
     textbox('$150',180,500,green,black,22)
@@ -197,6 +197,5 @@ while  run:
     redrawGameWindow()
     if total_money>=200:
         win.fill(white)
-        print("yes")
     pygame.display.update()
 pygame.quit()
