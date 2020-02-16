@@ -34,6 +34,12 @@ gray=(128,128,128)
 #list of ingredients
 ingredient_list = [0, 0, 0, 0, 0]
 
+#Winning backgrounds
+winner1 = pygame.image.load("lastScene1.png")
+winner2 = pygame.image.load('lastScene2.png')
+winner3 = pygame.image.load('lastScene3.png')
+winState = winner1
+
 
 win =pygame.display.set_mode((s_width,s_height))
 pygame.display.set_caption("Sandwich Time")
@@ -48,9 +54,9 @@ class Ingredients:
         self.cost = cost
 
 #bread
-GR = Ingredients("Golden_Retriever.png", "bread", 'g', 10)
-Huskie = Ingredients("Huskie.png", "bread", 'h', 10)
-Dachshund = Ingredients("Dachshund.png", "bread", 'd', 10)
+GR = Ingredients("Golden_Retriever.png", "bread", 'g', 200)
+Huskie = Ingredients("Huskie.png", "bread", 'h', 200)
+Dachshund = Ingredients("Dachshund.png", "bread", 'd', 200)
 
 #meat
 Heart = Ingredients("heart.png", "meat", 'h', 10)
@@ -246,6 +252,29 @@ while run:
 
     redrawGameWindow()
     if total_money>=200:
-        win.fill(white)
+        win.blit(winState, (0, 0))
+        textbox("Press [E]",1150,325,white,black,22)
+        textbox("to continue...",1150,350,white,black,22)
+        if keys[pygame.K_e]:
+            winState = winner2
+            win.blit(winState, (0, 0))
+            textbox("Press [w]",1150,375,white,black,22)
+            textbox("to continue...",1150,400,white,black,22)
+        elif keys[pygame.K_w]:
+            winState = winner3
+            win.blit(winState, (0, 0))
+            textbox("Press [q]",1150,375,white,black,22)
+            textbox("to end...",1150,400,white,black,22)
+        elif keys[pygame.K_q]:
+            run=False
+        # print("after winner1")
+        # time.sleep(3)
+        # win.blit(winner2, (0, 0))
+        # time.sleep(3)
+        # win.blit(winner3, (0, 0))
+        # time.sleep(3)
+        # run = False
+
+
     pygame.display.update()
 pygame.quit()
