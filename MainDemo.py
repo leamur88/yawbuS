@@ -13,10 +13,10 @@ p_width=55
 progress=200
 total_money=0
 #moving
-walkRight = pygame.image.load('guy_right.png')
-walkLeft = pygame.image.load('guy_left.png')
-char = pygame.image.load('guy_up.png')
-ham = pygame.image.load('leBurger.gif')
+walkRight = pygame.image.load('pics/guy_right.png')
+walkLeft = pygame.image.load('pics/guy_left.png')
+char = pygame.image.load('pics/guy_up.png')
+ham = pygame.image.load('pics/leBurger.gif')
 vel = 10
 left = False
 right = False
@@ -31,16 +31,16 @@ dark_gray=(47,79,79)
 light_gray=(211,211,211)
 gray=(128,128,128)
 #Beginning
-intro = pygame.image.load('intro.png')
+intro = pygame.image.load('pics/intro.png')
 b=0
 
 #list of ingredients
 ingredient_list = [0, 0, 0, 0, 0]
 
 #Winning backgrounds
-winner1 = pygame.image.load("lastScene1.png")
-winner2 = pygame.image.load('lastScene2.png')
-winner3 = pygame.image.load('lastScene3.png')
+winner1 = pygame.image.load("pics/lastScene1.png")
+winner2 = pygame.image.load('pics/lastScene2.png')
+winner3 = pygame.image.load('pics/lastScene3.png')
 winState = winner1
 
 
@@ -57,26 +57,26 @@ class Ingredients:
         self.cost = cost
 
 #bread
-GR = Ingredients("Golden Retriever.png", "bread", 'g', 20)
-Huskie = Ingredients("Huskie.png", "bread", 'h', 20)
-Dachshund = Ingredients("Dachshund.png", "bread", 'd', 20)
+GR = Ingredients("pics/Golden Retriever.png", "bread", 'g', 20)
+Huskie = Ingredients("pics/Huskie.png", "bread", 'h', 20)
+Dachshund = Ingredients("pics/Dachshund.png", "bread", 'd', 20)
 
 #meat
-Heart = Ingredients("Heart.png", "meat", 'h', 5)
-Brain = Ingredients("Brain.png", "meat", 'b', 2)
-Liver = Ingredients("Liver.png", 'meat', 'l', 9)
-Lung = Ingredients('Lung.png', 'meat', 'u', 4)
+Heart = Ingredients("pics/Heart.png", "meat", 'h', 5)
+Brain = Ingredients("pics/Brain.png", "meat", 'b', 2)
+Liver = Ingredients("pics/Liver.png", 'meat', 'l', 9)
+Lung = Ingredients('pics/Lung.png', 'meat', 'u', 4)
 
 #veggie
-FireHydrant = Ingredients("Fire Hydrant.png", 'veg', 'f', 5)
-Limo = Ingredients("Limo.png", 'veg', 'l', 7)
-Statue = Ingredients("Statue.png", 'veg', 's', 2)
-Surfboard = Ingredients("Surfboard.png", 'veg', 'b', 3)
+FireHydrant = Ingredients("pics/Fire Hydrant.png", 'veg', 'f', 5)
+Limo = Ingredients("pics/Limo.png", 'veg', 'l', 7)
+Statue = Ingredients("pics/Statue.png", 'veg', 's', 2)
+Surfboard = Ingredients("pics/Surfboard.png", 'veg', 'b', 3)
 
 #sauce
-Fire = Ingredients("Fire.png", "sauce", 'f', 2)
-Mud = Ingredients("Mud.gif", "sauce", 'm', 3)
-Slime = Ingredients("Slime.gif", 'sauce', 's', 8)
+Fire = Ingredients("pics/Fire.png", "sauce", 'f', 2)
+Mud = Ingredients("pics/Mud.gif", "sauce", 'm', 3)
+Slime = Ingredients("pics/Slime.gif", 'sauce', 's', 8)
 
 bread = [GR, Huskie, Dachshund]
 meat = [Heart, Brain, Liver, Lung]
@@ -142,7 +142,7 @@ def redrawGameWindow():
 
 
     #Sandwich progress
-    counter=pygame.image.load("filled counter.jpg")
+    counter=pygame.image.load("pics/filled counter.jpg")
     pygame.draw.rect(win,gray,(250,250,200,300))
     win.blit(counter, (450, 250))
     textbox('Sandwich Progress',350,262,white,black,22)
