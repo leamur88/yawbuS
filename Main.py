@@ -50,7 +50,7 @@ pygame.init()
 run= True
 class Ingredients:
     def __init__(self, image_id, type, select, cost):
-        self.id = image_id
+        self.id = image_id[5:]
         self.type = type
         self.select = select
         self.cost = cost
